@@ -10,17 +10,16 @@ Unicode::CharWidth - Character Width properties
 
 =head1 VERSION
 
-Version 1.01
+Version 1.02
 
 =cut
 
-our $VERSION = '1.01';
+our $VERSION = '1.02';
 
 # the names of the character classes we'll define
 # we arrange them so, that in an array of 4 elements the mbwidth value
 # indexes the corresponding element, -1 being equivalent to 3
 
-use Devel::Dwarn;
 use Carp;
 our @CARP_NOT = qw(utf8); # otherwise we see errors from unicode_heavy.pl
 
@@ -201,24 +200,31 @@ __END__
 C<Unicode::CharWidth> exports four functions: C<InZerowidth>,
 C<InSinglewidth>, C<InDoubleWidth> and C<InNowidth>.
 
-These functions are not supposed to be called directly (they return
-lengthy strings that describe character properties), but are automatically
-called by Perl's Unicode matching system. They must be present in your
-current package for the unicode properties to work as described below.
+These functions enable the use of like-named (inofficial) unicode
+properties in regular expressions. Thus C</\p{InSinglewidth}/> matches
+all characters that occupy a single screen column.
+
+The functions are not supposed to be called directly (they return
+strings that describe character properties, some of them lengthy),
+but are automatically called by Perl's Unicode matching system.
+They must be present in your current package for the L</unicode properties>
+to work as described below.
 
 C<Unicode::CharWidth> normally ignores arguments in the C<use>-statement.
 There is one exception:
 
     use Unicode::CharWidth -gen
 
-You don't ever need to run this on an installed copy of this module.
+You don't ever I<need> to run this on an installed copy of this module.
 See L</The -gen Option> for more.
 
 =head2 Unicode Properties
 
-The exported funcions C<InZerowidth>, C<InSinglewidth>, C<InDoubleWidth>
-and C<InNowidth> enable the use of like-named (inofficial) unicode
-properties in regular expressions.
+The enabled Unicode properties are InZerowidth, InSinglewidth,
+InDoubleWidth, and InNowidth.
+
+They are not derived from Unicode documents directly, but rely on
+the implementation of the C library function C<wcwidth(3)>.
 
 =over 4
 
@@ -226,7 +232,7 @@ properties in regular expressions.
 
 C</\p{InZerowidth}/> matches the characters that don't occupy 
 column space of their own. Most of these are modifying or overlay
-chaacters that add accents or overstrokes to the preceding character.
+characters that add accents or overstrokes to the preceding character.
 C<"\0"> also has zero width. It is the only zero width character in
 the ASCII range.
 
@@ -248,7 +254,7 @@ class.
 C</\p{InNowidth}/> These are characters that don't have a (fixed) column
 width assigned at all. All ASCII control characters except C<"\0"> are in
 this class, C<"\t">, C<"\n">, and C<"\r"> are examples.  Outside ASCII,
-the vast ranges of unassigned (reserved) iunicode characters fall in
+vast ranges of unassigned and reserved unicode characters fall in
 this class.
 
 =back
