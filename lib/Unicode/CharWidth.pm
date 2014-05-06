@@ -14,7 +14,7 @@ Version 1.01
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '1.01';
 
 # the names of the character classes we'll define
 # we arrange them so, that in an array of 4 elements the mbwidth value
