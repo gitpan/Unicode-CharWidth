@@ -4,3 +4,5 @@ Revision history for Unicode-CharWidth
         First version, released on an unsuspecting world.
 1.02 2014-05-06 13:52:57
         Removed Devel::Dwarn from the distribution
+1.03 2014-11-11 00:27:07
+	Took care of a syntax warning in import

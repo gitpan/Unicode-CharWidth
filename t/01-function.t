@@ -1,5 +1,6 @@
 #!perl
 use strict; use warnings;
+use Vi::QuickFix;
 
 use Test::More tests => 7;
 

@@ -10,11 +10,11 @@ Unicode::CharWidth - Character Width properties
 
 =head1 VERSION
 
-Version 1.02
+Version 1.03
 
 =cut
 
-our $VERSION = '1.02';
+our $VERSION = '1.03';
 
 # the names of the character classes we'll define
 # we arrange them so, that in an array of 4 elements the mbwidth value
@@ -44,7 +44,7 @@ sub import {
     _compile_functions();
     @_ = ($class);
     require Exporter;
-    goto Exporter->can('import') or die q(Exporter can't import?);
+    goto(Exporter->can('import') or die q(Exporter can't import?));
 }
 
 our @EXPORT = CLASS_NAMES;
