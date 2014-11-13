@@ -10,11 +10,11 @@ Unicode::CharWidth - Character Width properties
 
 =head1 VERSION
 
-Version 1.03
+Version 1.04
 
 =cut
 
-our $VERSION = '1.03';
+our $VERSION = '1.04';
 
 # the names of the character classes we'll define
 # we arrange them so, that in an array of 4 elements the mbwidth value

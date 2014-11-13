@@ -6,3 +6,5 @@ Revision history for Unicode-CharWidth
         Removed Devel::Dwarn from the distribution
 1.03 2014-11-11 00:27:07
 	Took care of a syntax warning in import
+1.04 2014-11-13 04:21:02
+	Removed trivial error from t/01-function.t
